@@ -189,8 +189,8 @@ for(let i=0; i<days; ++i) {
 stripTime(startLimit); // last midnight
 stripTime(dateOnTheLeft); // end limit, 3 days from now midnight
 
-$.getJSON('https://cors.io/?http://content.warframe.com/dynamic/worldState.php', function(data) {
-  var cetus = data.SyndicateMissions.find(mission => mission.Tag == 'CetusSyndicate');
+$.getJSON('http://www.whateverorigin.org/get?url='+ encodeURIComponent('http://content.warframe.com/dynamic/worldState.php')+'&callback=?', function(data) {
+  var cetus = JSON.parse(data.contents).SyndicateMissions.find(mission => mission.Tag == 'CetusSyndicate');
   try {
     var activation = new Number(cetus.Expiry.$date.$numberLong);
     localStorage.setItem('activation', activation);
